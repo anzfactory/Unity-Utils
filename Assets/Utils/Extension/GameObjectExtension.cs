@@ -1,15 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Xyz.AnzFactory.Utils.Extension
 {
     public static class GameObjectExtension
     {
-        public static T AddComponentIfNeeded<T>(this GameObject gameObject) where T:Component
+        public static T AddComponentIfNeeded<T>(this GameObject self) where T:Component
         {
-            T additionalComponent = gameObject.GetComponent<T>();
+            T additionalComponent = self.GetComponent<T>();
             if (additionalComponent == null) {
-                    additionalComponent = gameObject.AddComponent<T>();
+                additionalComponent = self.AddComponent<T>();
             }
             return additionalComponent;
         }
