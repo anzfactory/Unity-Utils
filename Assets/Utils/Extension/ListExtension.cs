@@ -16,5 +16,14 @@ namespace Xyz.AnzFactory.Utils.Extension
             self.RemoveAt(self.Count - 1);
             return item;
         }
+
+        public static T RandomOne<T>(this List<T> self)
+        {
+            if (self.Count == 0) {
+                throw new System.InvalidOperationException("件数が0件");
+            }
+
+            return self[UnityEngine.Random.Range(0, self.Count)];
+        }
     }
 }

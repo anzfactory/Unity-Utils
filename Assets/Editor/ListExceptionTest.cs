@@ -37,4 +37,35 @@ public class ListExceptionTest
         Assert.IsNotNull(ex, "例外が発生していない！");
         Assert.IsInstanceOf<System.InvalidOperationException>(ex, "予期せぬ例外！");
     }
+
+    [Test]
+    public void RandomeOneTest_Success_100times()
+    {
+        var list = new List<string>();
+        for (int i = 0; i < 5; i++) {
+            list.Add("item " + i.ToString());
+        }
+
+        for (int i = 0; i < 100; i++) {
+            var one = list.RandomOne();
+            Assert.IsTrue(list.Contains(one), "何か変なものを取り出している！");
+        }
+        Assert.IsTrue(list.Count == 5, "なぜかアイテムが消えている！");
+    }
+
+    [Test]
+    public void RandomOneTest_Failed()
+    {
+        var list = new List<string>();
+
+        System.Exception ex = null;
+        try {
+            list.RandomOne();
+        } catch (System.Exception e) {
+            ex = e;
+        }
+
+        Assert.IsNotNull(ex, "例外が発生していない！");
+        Assert.IsInstanceOf<System.InvalidOperationException>(ex, "予期せぬ例外！");
+    }
 }
