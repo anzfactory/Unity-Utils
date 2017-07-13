@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Xyz.AnzFactory.Utils
+namespace Xyz.AnzFactory.Utils.Extension
 {
     public static class GameObjectExtension
     {
