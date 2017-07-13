@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Xyz.AnzFactory.Utils {
+namespace Xyz.AnzFactory.Utils
+{
     public static class GameObjectExtension
     {
         public static T AddComponentIfNeeded<T>(this GameObject gameObject) where T:Component
