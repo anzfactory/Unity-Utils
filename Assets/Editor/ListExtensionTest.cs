@@ -6,7 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Xyz.AnzFactory.Utils.Extension;
 
-public class ListExceptionTest
+public class ListExtensionTest
 {
 
 	[Test]
