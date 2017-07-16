@@ -6,6 +6,14 @@ namespace Xyz.AnzFactory.Utils.Extension
 {
     public static class ListExtension
     {
+		public static T At<T>(this List<T> self, int index, T defaultValue)
+		{
+			if (0 > index || index >= self.Count) {
+				return defaultValue;
+			}
+			return self[index];
+		}
+
         public static T Pop<T>(this List<T> self)
         {
             if (self.Count == 0) {

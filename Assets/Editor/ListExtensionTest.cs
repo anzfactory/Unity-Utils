@@ -8,6 +8,31 @@ using Xyz.AnzFactory.Utils.Extension;
 
 public class ListExtensionTest
 {
+	[Test]
+	public void AtTest()
+	{
+		var list = new List<int>();
+		list.Add(1);
+		list.Add(2);
+		list.Add(3);
+
+		var item3 = list.At(2, -1);
+		Assert.IsTrue(item3 == 3, "違うアイテムが取得されている！");
+	}
+
+	public void AtTest_OutOfRange()
+	{
+		var list = new List<string>();
+		list.Add("item 1");
+		list.Add("item 2");
+		list.Add("item 3");
+
+		var defaultValue = "item missing";
+		var item = list.At(-1, defaultValue);
+		Assert.IsTrue(item == defaultValue);
+		item = list.At(100, defaultValue);
+		Assert.IsTrue(item == defaultValue);
+	}
 
 	[Test]
 	public void PopTest_Success()
