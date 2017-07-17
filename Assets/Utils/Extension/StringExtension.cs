@@ -12,6 +12,7 @@ namespace Xyz.AnzFactory.Utils.Extension
 	        if (!ColorUtility.TryParseHtmlString(self, out color)) {
 	            Debug.LogWarning("Unknown color code... " + self);
 	        }
+
 	        return color;
 	    }
 	}
