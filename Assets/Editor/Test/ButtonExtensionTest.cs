@@ -23,7 +23,7 @@ public class ButtonExtensionTest
 
 	private GameObject CreateButtonObject()
 	{
-		// inspectorから作ったような階層を想定している
+		// ヒエラルキーから作ったような階層を想定している
 		var go = new GameObject();
 		go.AddComponent<Button>();
 		var textGo = new GameObject();

@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Xyz.AnzFactory.Utils.Extension
 {
+	/// <summary>
+	/// Transform拡張クラス
+	/// </summary>
 	public static class TransformExtension
 	{
 		/// <summary>
