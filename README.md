@@ -9,6 +9,10 @@ Unity向けの便利な何かしら達
 
 - `void SetTitle()`: Buttonのタイトルをセットするやつ（HierarchからButton作ったものを想定している）
 
+### DateTimeExtension
+
+- `long Timestamp()`: DateTimeをUNIXタイムスタンプに変換する
+
 ### GameObjectExtension
 
 - `void AddComponentIfNeeded<T>()`: 指定されたComponentがなければ追加するやつ  
@@ -36,3 +40,14 @@ Unity向けの便利な何かしら達
 ### TransformExtension
 
 - `void ChangeLayersRecursively(string)`: 再帰的に指定されたレイヤーに変えるやつ
+
+## Network
+
+### NTP
+
+公開されているNTPサービスをつかって正しい現在時刻を取得するやつ
+CREDIT: [NICT様](http://jjy.nict.go.jp/ntp/)
+
+- `void GetTimestamp(System.Action<long?>)`: UNIXタイムスタンプを取得
+- `void GetTimestamp(System.Action<DateTime?>)`: UNIXタイムスタンプをDateTimeに変換して取得  
+  DateTimeはLocalDateTimeに変換
