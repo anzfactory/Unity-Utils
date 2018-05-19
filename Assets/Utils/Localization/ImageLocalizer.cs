@@ -16,17 +16,35 @@ namespace Xyz.AnzFactory.Utils.Localization
 		#endregion
 		
 		#region "Lifecycles"
+		private void Awake()
+		{
+			LangSetting.Instance.OnChangedCurrentLang += OnChangedCurrentLang;
+		}
+
 		private void Start()
 		{
-			var target = gameObject.GetComponent<UnityEngine.UI.Image>();
-			target.sprite = data.GetSprite(LangSetting.CurrentLang);
+			UpdateImage();
+		}
+
+		private void OnDestroy()
+		{
+			LangSetting.Instance.OnChangedCurrentLang -= OnChangedCurrentLang;
 		}
 		#endregion
 		
 		#region "Events"
+		private void OnChangedCurrentLang()
+		{
+			UpdateImage();
+		}
 		#endregion
 		
 		#region "Methods"
+		private void UpdateImage()
+		{
+			var target = gameObject.GetComponent<UnityEngine.UI.Image>();
+			target.sprite = data.GetSprite(LangSetting.Instance.CurrentLang);
+		}
 		#endregion
 		
 	}

@@ -16,17 +16,35 @@ namespace Xyz.AnzFactory.Utils.Localization
 		#endregion
 		
 		#region "Lifecycles"
+		private void Awake()
+		{
+			LangSetting.Instance.OnChangedCurrentLang += OnChangedCurrentLang;
+		}
+
 		private void Start()
 		{
-			var target = gameObject.GetComponent<UnityEngine.UI.Text>();
-			target.text = data.GetText(LangSetting.CurrentLang);
+			UpdateText();
+		}
+
+		private void OnDestroy()
+		{
+			LangSetting.Instance.OnChangedCurrentLang -= OnChangedCurrentLang;
 		}
 		#endregion
 		
 		#region "Events"
+		private void OnChangedCurrentLang()
+		{
+			UpdateText();
+		}
 		#endregion
 		
 		#region "Methods"
+		private void UpdateText()
+		{
+			var target = gameObject.GetComponent<UnityEngine.UI.Text>();
+			target.text = data.GetText(LangSetting.Instance.CurrentLang);
+		}
 		#endregion
 		
 	}

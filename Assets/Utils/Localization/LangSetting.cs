@@ -1,4 +1,5 @@
-﻿namespace Xyz.AnzFactory.Utils.Localization
+﻿
+namespace Xyz.AnzFactory.Utils.Localization
 {
 	public enum Lang
 	{
@@ -8,18 +9,31 @@
 
 	public class LangSetting
 	{
-		private static readonly string PREFS_KEY = "LangSetting.Lang";
+		private static readonly string PREFS_KEY = "Xyz.AnzFactory.Util.Localization.LangSetting.Lang";
+		
 		#region "Fields"
+		public System.Action OnChangedCurrentLang;
 		private static LangSetting instance = new LangSetting();
 		private Lang currentLang;
+		
 		#endregion
 		
 		#region "Properties"
-		public static Lang CurrentLang {
+		public static LangSetting Instance
+		{
+			get { return instance; }
+		}
+		public Lang CurrentLang
+		{
 			get { return instance.currentLang; }
 			set {
+				if (instance.currentLang == value) {
+					return;
+				}
 				instance.currentLang = value;
+				OnChangedCurrentLang?.Invoke();	// 変更通知
 				UnityEngine.PlayerPrefs.SetInt(PREFS_KEY, (int)instance.currentLang);
+				UnityEngine.PlayerPrefs.Save();
 			}
 		}
 		#endregion
